@@ -1,1 +1,1 @@
-alias tmux='tmux new -As0'
+alias tmuxn='tmux new -As0'

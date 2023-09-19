@@ -7,7 +7,7 @@ return {
       configs.setup({
           ensure_installed = {
 	      "c",
-              "cpp",
+          "cpp",
 	      "php",
 	      "lua",
 	      "python",

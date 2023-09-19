@@ -1,9 +1,9 @@
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
-if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
-fi
+#if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+ # source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+#fi
 
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
@@ -71,7 +71,7 @@ bindkey "^[[1~" beginning-of-line
 bindkey "^[[4~" end-of-line
 HIST_STAMPS="yyyy-mm-dd"
 
-source .aliases
+source ~/.aliases
 
 # Would you like to use another custom folder than $ZSH/custom?
 # ZSH_CUSTOM=/path/to/new-custom-folder
@@ -82,13 +82,16 @@ source .aliases
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 #plugins=(svn colored-man-pages command-not-found common-aliases copydir copyfile cp debian dircycle dirhistory dirpersist emoji-clock emoji gitfast gnu-util history-substring-search history iwhois man nmap rand-quote rsync ssh-agent sudo tmux web-search zsh-syntax-highlighting timewarrior)
+plugins=(colored-man-pages command-not-found common-aliases copypath copyfile cp debian dircycle dirhistory dirpersist emoji-clock emoji gitfast history-substring-search history man nmap rand-quote rsync ssh-agent sudo web-search)
 
-source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
+if [[ -f /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme ]]; then
+	source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
+elif [[ -f "$ZSH/custom/themes/powerlevel10k/powerlevel10k.zsh-theme" ]]; then
+	source "$ZSH/custom/themes/powerlevel10k/powerlevel10k.zsh-theme"
+fi
 
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 source $ZSH/oh-my-zsh.sh
 
 
-plugins=(colored-man-pages command-not-found common-aliases copypath copyfile cp debian dircycle dirhistory dirpersist emoji-clock emoji gitfast history-substring-search history man nmap rand-quote rsync ssh-agent sudo web-search)
