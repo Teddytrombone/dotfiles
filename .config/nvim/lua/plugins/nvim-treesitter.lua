@@ -1,11 +1,10 @@
 return {
+  -- add more treesitter parsers
+  {
     "nvim-treesitter/nvim-treesitter",
-    build = ":TSUpdate",
-    config = function () 
-      local configs = require("nvim-treesitter.configs")
-
-      configs.setup({
-          ensure_installed = {
+    opts = function(_, opts)
+      -- add tsx and treesitter
+      vim.list_extend(opts.ensure_installed, {
 	      "c",
           "cpp",
 	      "php",
@@ -23,10 +22,7 @@ return {
 	      "json5",
 	      "regex",
 	      "yaml",
-	  },
-          sync_install = false,
-          highlight = { enable = true },
-          indent = { enable = true },  
-        })
-    end
+      })
+    end,
+  },
 }

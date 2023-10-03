@@ -1,4 +1,4 @@
-require("manfred")
+require("config.lazy")
 
 
 
