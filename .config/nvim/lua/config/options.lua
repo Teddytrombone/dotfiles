@@ -4,3 +4,12 @@
 
 vim.opt.tabstop = 4
 vim.opt.shiftwidth = 4
+
+vim.filetype.add({
+	extension = {
+		typoscript = "typoscript",
+		tsconfig = "typoscript",
+	},
+})
+
+vim.treesitter.language.register("typoscript", "typoscript")
