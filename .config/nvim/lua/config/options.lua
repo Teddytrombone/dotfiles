@@ -12,4 +12,8 @@ vim.filetype.add({
 	},
 })
 
-vim.treesitter.language.register("typoscript", "typoscript")
+vim.filetype.add({
+	filename = {
+		["ext_typoscript_setup.txt"] = "typoscript",
+	},
+})

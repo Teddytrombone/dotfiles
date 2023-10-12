@@ -36,6 +36,8 @@ return {
 					requires_generate_from_grammar = false, -- if folder contains pre-generated src/parser.c
 				},
 			}
+
+			vim.treesitter.language.register("typoscript", "typoscript")
 		end,
 	},
 }
