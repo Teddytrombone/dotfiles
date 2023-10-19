@@ -4,16 +4,3 @@
 
 vim.opt.tabstop = 4
 vim.opt.shiftwidth = 4
-
-vim.filetype.add({
-	extension = {
-		typoscript = "typoscript",
-		tsconfig = "typoscript",
-	},
-})
-
-vim.filetype.add({
-	filename = {
-		["ext_typoscript_setup.txt"] = "typoscript",
-	},
-})
