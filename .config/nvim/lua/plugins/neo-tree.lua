@@ -1,3 +1,5 @@
+local Util = require("lazyvim.util")
+
 return {
 	"nvim-neo-tree/neo-tree.nvim",
 	opts = {
@@ -263,6 +265,16 @@ return {
 				},
 			},
 			commands = {
+				find_in_dir = function(state)
+					local node = state.tree:get_node()
+					local dir
+					if node.type == "directory" then
+						dir = node.path
+					else
+						dir = state.tree.nodes.by_id[node._parent_id].path
+					end
+					Util.telescope("live_grep", { cwd = dir })()
+				end,
 				copy_selector = function(state)
 					local node = state.tree:get_node()
 					local filepath = node:get_id()
@@ -313,6 +325,7 @@ return {
 			window = {
 				mappings = {
 					["Y"] = "copy_selector",
+					["F"] = "find_in_dir",
 				},
 			},
 		},
