@@ -3,8 +3,8 @@ return {
 	opts = {
 		nesting_rules = {
 			["js"] = {
-				pattern = "(.+)%.js$",
-				files = { "%1.js.map", "%1.min.js", "%1.d.ts" },
+				pattern = "^(.+)%.js$",
+				files = { "%1.js.map", "%1.*.js", "%1.d.ts" },
 			},
 			[".gitignore"] = {
 				pattern = "^%.gitignore$",
@@ -133,10 +133,6 @@ return {
 					"sponsors*",
 				},
 			},
-			["go"] = {
-				pattern = "(.*)%.go$",
-				files = { "%1_test.go" },
-			},
 			["docker"] = {
 				pattern = "^dockerfile$",
 				ignore_case = true,
@@ -149,6 +145,54 @@ return {
 			[".env"] = {
 				pattern = "^%.env$",
 				files = { "*.env", ".env.*", ".envrc", "env.d.ts" },
+			},
+			["tex"] = {
+				pattern = "^(.*)%.tex$",
+				files = {
+					"%1.acn",
+					"%1.acr",
+					"%1.alg",
+					"%1.aux",
+					"%1.bbl",
+					"%1.blg",
+					"%1.fdb_latexmk",
+					"%1.fls",
+					"%1.glg",
+					"%1.glo",
+					"%1.gls",
+					"%1.idx",
+					"%1.ind",
+					"%1.ist",
+					"%1.lof",
+					"%1.log",
+					"%1.lot",
+					"%1.out",
+					"%1.pdf",
+					"%1.synctex.gz",
+					"%1.toc",
+					"%1.xdv",
+				},
+			},
+			["jsx"] = {
+				pattern = "^(.*)%.jsx$",
+				files = { "%1.js", "%1.*.jsx", "%1_*.js", "%1_*.jsx", "%1.less", "%1.module.less" },
+			},
+			["ts"] = {
+				pattern = "^(.*)%.ts$",
+				files = { "%1.js", "%1.d.ts.map", "%1.*.ts", "%1_*.js", "%1_*.ts" },
+			},
+			["svg"] = {
+				pattern = "^(.*)%.svg$",
+				files = { "%1.svgz", "%1.svg.*" },
+			},
+			["css"] = {
+				pattern = "^(.*)%.css$",
+				files = { "%1.css.map", "%1.*.css" },
+			},
+			-- for testing
+			["go"] = {
+				pattern = "(.*)%.go$",
+				files = { "%1_test.go" },
 			},
 			["vite.config"] = {
 				pattern = "^vite%.config%..*",
@@ -197,43 +241,6 @@ return {
 					"windi.config.*",
 				},
 			},
-			["tex"] = {
-				pattern = "^(.*)%.tex$",
-				files = {
-					"%1.acn",
-					"%1.acr",
-					"%1.alg",
-					"%1.aux",
-					"%1.bbl",
-					"%1.blg",
-					"%1.fdb_latexmk",
-					"%1.fls",
-					"%1.glg",
-					"%1.glo",
-					"%1.gls",
-					"%1.idx",
-					"%1.ind",
-					"%1.ist",
-					"%1.lof",
-					"%1.log",
-					"%1.lot",
-					"%1.out",
-					"%1.pdf",
-					"%1.synctex.gz",
-					"%1.toc",
-					"%1.xdv",
-				},
-			},
-			["jsx"] = {
-				pattern = "^(.*)%.jsx$",
-				files = { "%1.js", "%1.*.jsx", "%1_*.js", "%1_*.jsx", "%1.less", "%1.module.less" },
-			},
-			["ts"] = {
-				pattern = "^(.*)%.ts",
-				files = { "%1.js", "%1.d.ts.map", "%1.*.ts", "%1_*.js", "%1_*.ts" },
-			},
-			["svg"] = { "svgz", "svg.br" },
-			["css"] = { "css.map", "min.css" },
 		},
 		filesystem = {
 			filtered_items = {
