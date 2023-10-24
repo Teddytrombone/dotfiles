@@ -256,12 +256,14 @@ return {
 				},
 				never_show = {
 					".php-cs-fixer.cache",
+					"_processed_",
 				},
 				never_show_by_pattern = {
 					".null-ls_*",
 					"*/.devel/em",
 					"*/.devel/sn",
 					"*/.devel/cp",
+					"*/fileadmin/user_upload",
 				},
 			},
 			commands = {

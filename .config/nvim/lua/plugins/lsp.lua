@@ -4,6 +4,17 @@ return {
 	opts = {
 		-- make sure mason installs the server
 		servers = {
+			intelephense = {
+				settings = {
+					files = {
+						exclude = {
+							"**/.devel/",
+							"**/typo3_src-**/",
+							"typo3/",
+						},
+					},
+				},
+			},
 			html = {
 				root_dir = function(pattern)
 					local cwd = vim.loop.cwd()
@@ -14,10 +25,11 @@ return {
 				end,
 			},
 			lemminx = {
-				filetypes = { "xml", "xsd", "xsl", "xslt", "svg", "html" },
+				filetypes = { "xml", "xsd", "xsl", "xslt", "svg" },
+				--filetypes = { "xml", "xsd", "xsl", "xslt", "svg", "html" },
 				settings = {
 					xml = {
-						catalogs = { "/home/manfred/Programmieren/catalog.xml" },
+						--catalogs = { "/home/manfred/Programmieren/catalog.xml" },
 					},
 				},
 			},
