@@ -92,6 +92,17 @@ fi
 
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
+if command -v kitty &> /dev/null; then
+    if [[ $TERM -eq "xterm-kitty" ]]; then
+        if [[ -d "$HOME/Bilder/Wallpaper/" ]]; then
+            background=$(ls "$HOME/Bilder/Wallpaper/"*.png | sort --random-sort | head -1)
+            if [[ ! -z $background ]]; then
+                kitty @ set-background-image "$background" 
+            fi
+        fi
+    fi
+fi
+
 source $ZSH/oh-my-zsh.sh
 
 
