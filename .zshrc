@@ -5,12 +5,14 @@
  # source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 #fi
 
-# If you come from bash you might have to change your $PATH.
-# export PATH=$HOME/bin:/usr/local/bin:$PATH
-export PATH=$HOME/bin:$HOME/bin/.local:$PATH
+export PATH=$HOME/bin:$HOME/bin/.local:$HOME/.bin:$HOME/.bin/.local:$PATH
 
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
+
+###############
+# some SVN related stuff - would be removed in future 
+###############
 
 function prompt_svn_status_info() {
   local svn_status_string="$ZSH_THEME_SVN_PROMPT_CLEAN"
@@ -55,47 +57,79 @@ prompt_svn() {
     fi
 }
 
+#############
+# COMPLETION
+#############
 zstyle ':completion:*' completer _complete _ignored
 zstyle :compinstall filename '/home/manfred/.zshrc'
 
 autoload -Uz compinit
 compinit
-# End of lines added by compinstall
-# Lines configured by zsh-newuser-install
-HISTFILE=~/.zsh_history
-HISTSIZE=10000
 SAVEHIST=10000
-setopt autocd extendedglob
+
+##########
+# HISTORY
+##########
+
+HISTFILE=~/.zsh_history
+HISTSIZE=50000
+SAVEHIST=50000
+HIST_STAMPS="yyyy-mm-dd"
+
+setopt EXTENDED_HISTORY
+setopt HIST_VERIFY
+setopt HIST_EXPIRE_DUPS_FIRST    # Expire duplicate entries first when trimming history.
+setopt HIST_IGNORE_DUPS          # Dont record an entry that was just recorded again.
+setopt HIST_IGNORE_ALL_DUPS      # Delete old recorded entry if new entry is a duplicate.
+setopt HIST_FIND_NO_DUPS         # Do not display a line previously found.
+setopt HIST_IGNORE_SPACE         # Dont record an entry starting with a space.
+setopt HIST_SAVE_NO_DUPS         # Dont write duplicate entries in the history file.
+
+setopt inc_append_history
+setopt share_history
+
+###############
+# KEY BINDINGS
+###############
+
 bindkey -e
 
 bindkey "^[[1~" beginning-of-line
 bindkey "^[[4~" end-of-line
 bindkey -s "^f" "tmux-sessionizer.sh\n"
-HIST_STAMPS="yyyy-mm-dd"
 
+
+###############
+# MISC
+###############
+setopt autocd extendedglob
+
+
+
+###############
+# ALIASES in separate file
+###############
 source ~/.aliases
 
-# Would you like to use another custom folder than $ZSH/custom?
-# ZSH_CUSTOM=/path/to/new-custom-folder
 
-# Which plugins would you like to load?
-# Standard plugins can be found in $ZSH/plugins/
-# Custom plugins may be added to $ZSH_CUSTOM/plugins/
-# Example format: plugins=(rails git textmate ruby lighthouse)
-# Add wisely, as too many plugins slow down shell startup.
-#plugins=(svn colored-man-pages command-not-found common-aliases copydir copyfile cp debian dircycle dirhistory dirpersist emoji-clock emoji gitfast gnu-util history-substring-search history iwhois man nmap rand-quote rsync ssh-agent sudo tmux web-search zsh-syntax-highlighting timewarrior)
+###############
+# Finally load theme and oh-my-zsh
+###############
+
 plugins=(colored-man-pages command-not-found common-aliases copypath copyfile cp debian dircycle dirhistory dirpersist emoji-clock emoji gitfast history-substring-search history man nmap rand-quote rsync ssh-agent sudo web-search)
 
 if [[ -f /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme ]]; then
 	source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
 elif [[ -f "$ZSH/custom/themes/powerlevel10k/powerlevel10k.zsh-theme" ]]; then
 	source "$ZSH/custom/themes/powerlevel10k/powerlevel10k.zsh-theme"
+else
+    echo "powerlevel10k not found, please install it"
 fi
 
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 if command -v kitty &> /dev/null; then
-    if [[ $TERM -eq "xterm-kitty" ]]; then
+    if [[ $TERM == "xterm-kitty" ]]; then
         if [[ -d "$HOME/Bilder/Wallpaper/" ]]; then
             background=$(ls "$HOME/Bilder/Wallpaper/"*.png | sort --random-sort | head -1)
             if [[ ! -z $background ]]; then
@@ -108,3 +142,7 @@ fi
 source $ZSH/oh-my-zsh.sh
 
 
+if [ -e /usr/share/fzf/completion.zsh ]; then
+  source /usr/share/fzf/key-bindings.zsh
+  source /usr/share/fzf/completion.zsh
+fi
