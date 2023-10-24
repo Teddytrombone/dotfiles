@@ -7,6 +7,7 @@
 
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
+export PATH=$HOME/bin:$HOME/bin/.local:$PATH
 
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
@@ -69,6 +70,7 @@ bindkey -e
 
 bindkey "^[[1~" beginning-of-line
 bindkey "^[[4~" end-of-line
+bindkey -s "^f" "tmux-sessionizer.sh\n"
 HIST_STAMPS="yyyy-mm-dd"
 
 source ~/.aliases
