@@ -29,10 +29,10 @@ return {
 		end)
 
 		-- Harpoon next and previous.
-		vim.keymap.set("n", "<a-5>", function()
+		vim.keymap.set("n", "<A-CR>", function()
 			ui.nav_next()
 		end)
-		vim.keymap.set("n", "<a-6>", function()
+		vim.keymap.set("n", "<A-BS>", function()
 			ui.nav_prev()
 		end)
 
