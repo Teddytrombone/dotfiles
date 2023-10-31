@@ -8,6 +8,9 @@ return {
 			parser_config.scss.install_info.url = "https://github.com/savetheclocktower/tree-sitter-scss"
 			parser_config.scss.install_info.revision = "3432af0393308cd1e34d048f64dc5bf5c8a9b8b0"
 
+			parser_config.html.install_info.url = "https://github.com/Teddytrombone/tree-sitter-html-fluid"
+			parser_config.html.install_info.revision = "2b0142b5b723a0e956a50539514123299f9b9550"
+
 			-- add tsx and treesitter
 			vim.list_extend(opts.ensure_installed, {
 				"c",
