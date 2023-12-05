@@ -145,4 +145,7 @@ source $ZSH/oh-my-zsh.sh
 if [ -e /usr/share/fzf/completion.zsh ]; then
   source /usr/share/fzf/key-bindings.zsh
   source /usr/share/fzf/completion.zsh
+elif [ -e /usr/share/doc/fzf/examples/completion.zsh ]; then
+  source /usr/share/doc/fzf/examples/key-bindings.zsh
+  source /usr/share/doc/fzf/examples/completion.zsh
 fi
