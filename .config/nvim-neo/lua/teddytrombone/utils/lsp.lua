@@ -62,6 +62,7 @@ M.mason_packages = {
 	"shellcheck",
 	"shfmt",
 	"stylua",
+	"yamlfix",
 }
 
 M.lsp_servers = {
