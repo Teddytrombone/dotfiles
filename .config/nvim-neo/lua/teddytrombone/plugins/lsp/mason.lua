@@ -1,6 +1,7 @@
 return {
 	"williamboman/mason.nvim",
 	build = ":MasonUpdate",
+	dependencies = { "WhoIsSethDaniel/mason-tool-installer.nvim" },
 	opts = {
 		ui = {
 			border = "rounded",
@@ -25,19 +26,9 @@ return {
 			end, 100)
 		end)
 
-		local packages = utils.mason_packages
-		local function ensure_installed()
-			for _, package in ipairs(packages) do
-				local p = mr.get_package(package)
-				if not p:is_installed() then
-					p:install()
-				end
-			end
-		end
-		if mr.refresh then
-			mr.refresh(ensure_installed)
-		else
-			ensure_installed()
-		end
+		local ensure_installed = {}
+		vim.list_extend(ensure_installed, utils.lsp_servers)
+		vim.list_extend(ensure_installed, utils.mason_packages)
+		require("mason-tool-installer").setup({ ensure_installed = ensure_installed })
 	end,
 }
