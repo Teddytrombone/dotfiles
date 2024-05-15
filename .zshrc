@@ -168,7 +168,7 @@ fi
 
 if [ ! -z "${BAT_COMMAND}" ]; then
     if command -v eza &> /dev/null; then
-        show_file_or_dir_preview="if [ -d {} ]; then eza --tree --color=always {} | head -200; else bat -n --color=always --line-range :500 {}; fi"
+        show_file_or_dir_preview="if [ -d {} ]; then eza --tree --color=always {} | head -200; else ${BAT_COMMAND} -n --color=always --line-range :500 {}; fi"
 
         _fzf_comprun() {
             local command=$1
