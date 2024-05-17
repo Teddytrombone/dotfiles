@@ -4,7 +4,6 @@
 #if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
  # source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 #fi
-
 export PATH=$HOME/bin:$HOME/bin/.local:$HOME/.bin:$HOME/.bin/.local:$PATH
 
 # Path to your oh-my-zsh installation.
@@ -149,3 +148,40 @@ elif [ -e /usr/share/doc/fzf/examples/completion.zsh ]; then
   source /usr/share/doc/fzf/examples/key-bindings.zsh
   source /usr/share/doc/fzf/examples/completion.zsh
 fi
+
+if command -v bat &> /dev/null; then
+    BAT_COMMAND='bat'
+fi
+if command -v batcat &> /dev/null; then
+    BAT_COMMAND='batcat'
+fi
+
+
+if [ ! -z "${BAT_COMMAND}" ]; then
+    export BAT_THEME=Dracula
+    export FZF_CTRL_T_OPTS="--preview '${BAT_COMMAND} -n --color=always --line-range :500 {}'"
+fi
+
+if command -v eza &> /dev/null; then
+    export FZF_ALT_C_OPTS="--preview 'eza --tree --color=always {} | head -200'"
+fi
+
+if [ ! -z "${BAT_COMMAND}" ]; then
+    if command -v eza &> /dev/null; then
+        show_file_or_dir_preview="if [ -d {} ]; then eza --tree --color=always {} | head -200; else ${BAT_COMMAND} -n --color=always --line-range :500 {}; fi"
+
+        _fzf_comprun() {
+            local command=$1
+            shift
+
+            case "$command" in
+                cd)           fzf --preview 'eza --tree --color=always {} | head -200' "$@" ;;
+                export|unset) fzf --preview "eval 'echo $'{}" "$@" ;;
+                ssh)          fzf --preview 'dig {}' "$@" ;;
+                *)            fzf --preview "$show_file_or_dir_preview" "$@" ;;
+            esac
+        }
+    fi
+fi
+
+command -v direnv >/dev/null 2>&1 && eval "$(direnv hook zsh)"

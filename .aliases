@@ -1,1 +1,11 @@
 alias tmuxn='tmux new -As "${USER}-default"'
+
+if command -v batcat &> /dev/null;then
+    if ! command -v bat &> /dev/null;then
+        alias bat='batcat'
+    fi
+fi
+
+if command -v eza &> /dev/null;then
+    alias eza='eza --git --icons=always'
+fi
