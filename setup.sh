@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 set -e
 
-stow --dotfiles zsh \
+stow --dotfiles \
+    zsh \
     nvim \
-    kitty
+    kitty \
+    tmux
