@@ -4,7 +4,7 @@ return {
     cmd = "Neotree",
     dependencies = {
         "nvim-lua/plenary.nvim",
-        "nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
+        -- "nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
         "MunifTanjim/nui.nvim",
         -- "3rd/image.nvim", -- Optional image support in preview window: See `# Preview Mode` for more information
     },
@@ -347,7 +347,7 @@ return {
         window = {
             mappings = {
                 ["<space>"] = "none",
-                ["<C-cr>"] = { "open", config = { expand_nested_files = true } }, -- expand nested file takes precedence
+                ["<A-CR>"] = "toggle_node",
                 ["Y"] = "copy_selector",
                 ["F"] = "find_in_dir",
             },
