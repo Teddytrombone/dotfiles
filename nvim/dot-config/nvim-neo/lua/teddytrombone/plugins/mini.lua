@@ -58,7 +58,7 @@ return {
 				["ext_typoscript_setup.txt"] = { glyph = "", hl = "TYPO3" },
 			},
 		})
-		require("mini.pairs").setup()
+		-- require("mini.pairs").setup()
 		-- Better Around/Inside textobjects
 		--
 		-- Examples:
