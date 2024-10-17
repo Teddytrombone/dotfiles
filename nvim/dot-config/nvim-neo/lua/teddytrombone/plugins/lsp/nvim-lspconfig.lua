@@ -26,9 +26,8 @@ return {
 			local mason_lspconfig = require("mason-lspconfig")
 			local lspconfig = require("lspconfig")
 			local capabilities = vim.lsp.protocol.make_client_capabilities()
-			capabilities =
-				vim.tbl_deep_extend("force", capabilities, require("cmp_nvim_lsp").default_capabilities(capabilities))
-			utils.typo3_lsp(lspconfig)
+			capabilities = vim.tbl_deep_extend("force", capabilities, require("cmp_nvim_lsp").default_capabilities())
+			-- utils.typo3_lsp(lspconfig)
 			utils.setup()
 
 			mason_lspconfig.setup({
@@ -55,7 +54,7 @@ return {
 				end,
 			})
 
-			lspconfig.typo3.setup({})
+			-- lspconfig.typo3.setup({})
 		end,
 	},
 }
