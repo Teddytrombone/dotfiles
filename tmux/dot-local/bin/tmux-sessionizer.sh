@@ -15,7 +15,7 @@ function increase {
 		return 0
 	fi
 	SELECTED="$1"
-	if [ "$SELECTED" -eq "$DEFAULT" ]; then
+	if [[ "$SELECTED" == "$DEFAULT" ]]; then
 		return 0
 	fi
 	zoxide add "$SELECTED"
