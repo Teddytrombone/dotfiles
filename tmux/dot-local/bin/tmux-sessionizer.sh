@@ -15,7 +15,7 @@ function increase {
 		return 0
 	fi
 	SELECTED="$1"
-	if [ $SELECTED -eq $DEFAULT ]; then
+	if [ "$SELECTED" -eq "$DEFAULT" ]; then
 		return 0
 	fi
 	zoxide add "$SELECTED"
@@ -62,7 +62,7 @@ selected_name=$(basename "$selected" | tr . _)
 tmux_running=$(pgrep tmux)
 
 function initTmuxSession {
-	tmux new-session "$1" -s "$selected_name" -c "$selected" -n "DocRoot"
+	tmux new-session "$1" -s "$selected_name" -c "$selected" -n "Root"
     if [[ -d "$selected/packages" ]]; then
         PACKAGES="$selected/packages"
     elif [[ -d "$selected/typo3conf/ext" ]]; then
