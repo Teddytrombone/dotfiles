@@ -56,16 +56,34 @@ if [[ -z $selected ]]; then
 	exit 0
 fi
 
+increase "$selected"
+
 selected_name=$(basename "$selected" | tr . _)
 tmux_running=$(pgrep tmux)
 
+function initTmuxSession {
+	tmux new-session "$1" -s "$selected_name" -c "$selected" -n "DocRoot"
+    if [[ -d "$selected/packages" ]]; then
+        PACKAGES="$selected/packages"
+    elif [[ -d "$selected/typo3conf/ext" ]]; then
+        PACKAGES="$selected/typo3conf/ext"
+    fi
+
+    if [[ -n "$PACKAGES" && -d "$PACKAGES/bc_kunden_$selected_name" ]]; then
+        echo "Found" >> ~/inittmux
+        tmux new-window -t "$selected_name":2 -n "KundenExt" -c "$PACKAGES/bc_kunden_$selected_name" 
+    fi
+
+    tmux select-window -t "$selected_name":1 
+}
+
 if [[ -z $TMUX ]] && [[ -z $tmux_running ]]; then
-	tmux new-session -s "$selected_name" -c "$selected"
+    initTmuxSession
 	exit 0
 fi
 
 if ! tmux has-session -t="$selected_name" 2>/dev/null; then
-	tmux new-session -ds "$selected_name" -c "$selected"
+    initTmuxSession -d
 fi
 
 tmux switch-client -t "$selected_name"

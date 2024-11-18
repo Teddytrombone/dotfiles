@@ -1,7 +1,7 @@
 #if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
  # source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 #fi
-export PATH=$HOME/bin:$HOME/bin/.local:$HOME/.bin:$HOME/.bin/.local:$HOME/.local/bin:$PATH
+export PATH=$HOME/.config/composer/vendor/bin:$HOME/bin:$HOME/bin/.local:$HOME/.bin:$HOME/.bin/.local:$HOME/.local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
