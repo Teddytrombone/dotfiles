@@ -1,18 +1,18 @@
 return {
-    {
-        "Mofiqul/dracula.nvim",
-        opts = function(_, opts)
-            local colors = require("dracula").colors()
-            opts.transparent_bg = true
-            opts.overrides = {
-                ["@variable"] = { fg = colors.bright_blue },
-            }
-        end,
-        config = function(_, opts)
-            require("dracula").setup(opts)
-            vim.cmd.colorscheme("dracula")
-        end,
-    },
+    -- {
+    --     "Mofiqul/dracula.nvim",
+    --     opts = function(_, opts)
+    --         local colors = require("dracula").colors()
+    --         opts.transparent_bg = true
+    --         opts.overrides = {
+    --             ["@variable"] = { fg = colors.bright_blue },
+    --         }
+    --     end,
+    --     config = function(_, opts)
+    --         require("dracula").setup(opts)
+    --         vim.cmd.colorscheme("dracula")
+    --     end,
+    -- },
     {
         "catppuccin/nvim",
         priority = 1000,

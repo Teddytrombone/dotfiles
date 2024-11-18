@@ -1,8 +1,10 @@
 vim.filetype.add({
-	pattern = {
-		[".*/*.typoscript"] = "typoscript",
-		[".*/*.tsconfig"] = "typoscript",
-		[".*/ext_typoscript_setup.txt"] = "typoscript",
+	extension = {
+		typoscript = "typoscript",
+		tsconfig = "typoscript",
+	},
+	filename = {
+		["ext_typoscript_setup.txt"] = "typoscript",
 	},
 })
 --
