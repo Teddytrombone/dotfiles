@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-PROJECTS="/var/www"
+PROJECTS=${PROJECTS:-"/var/www"}
 DEFAULT="${USER}-default"
 
 ZOXIDE_AVAILABLE=1
@@ -24,26 +24,41 @@ function increase {
 function search {
 	projects=$(find "$PROJECTS" -mindepth 1 -maxdepth 1 -type d)
 	if [ $ZOXIDE_AVAILABLE -eq 1 ]; then
+        declare -A ZOXIDE_CACHE
+
+        # Fülle den Cache
+        while IFS= read -r line; do
+            SCORE=$(echo "$line" | awk '{print $1}')
+            PFAD=$(echo "$line" | awk '{$1=""; print $0}' | sed 's/^ //')
+            ZOXIDE_CACHE["$PFAD"]=$SCORE
+        done < <(zoxide query -l -s "")
+
+        declare -A TMUX_SESSIONS
+        while IFS= read -r session; do
+            TMUX_SESSIONS["$session"]=1
+        done < <(tmux list-sessions | sed -E 's/:.*$//' | grep -v "^$(tmux display-message -p '#S')\$")
 		projects=$(
 			echo "${projects[@]}" |
 				while read -r p; do
-					# get the projects in each namespace with their zoxide scores
-					Z_RESULT=$(zoxide query -l -s "$p")
-					if [[ -z $Z_RESULT ]]; then
-						echo "0 $p"
-					else
-						echo "$Z_RESULT"
-					fi
+                    BASE=${p#$PROJECTS/}
+                    BASE=${BASE//./_}
+                    ICON=$([[ -n "${TMUX_SESSIONS[$BASE]}" ]] && echo "🚀" || echo "")
+                    if [[ -n "${ZOXIDE_CACHE[$p]}" ]]; then
+                        SCORE=${ZOXIDE_CACHE[$p]}
+                        echo "$SCORE $p $ICON"
+                    else
+                        echo "0 $p $ICON"
+                    fi
 				done |
 				sort -rnk1 |
-				awk '{print $2}'
+				awk '{print $2 $3}'
 		)
 	fi
 	#	projects=("${projects[@]}" "em-default")
 	echo "$(
 		echo "$DEFAULT"
 		echo "${projects[@]}"
-	)" | fzf-tmux --no-sort --prompt "  "
+	)" | fzf-tmux --no-sort --prompt "  " | sed 's/\s*🚀//'
 }
 
 if [[ $# -eq 1 ]]; then
