@@ -1,0 +1,8 @@
+clipboard-read = allow
+clipboard-write = allow
+background-opacity = 0.95
+cursor-style = bar
+
+config-file = keybinds
+config-file = fonts-jetbrains
+config-file = theme-catpuccin-mocha

@@ -5,4 +5,5 @@ stow --dotfiles \
     zsh \
     nvim \
     kitty \
-    tmux
+    tmux \
+    ghostty
