@@ -5,4 +5,4 @@ cursor-style = bar
 
 config-file = keybinds
 config-file = fonts-jetbrains
-config-file = theme-catpuccin-mocha
+theme = catppuccin-mocha
