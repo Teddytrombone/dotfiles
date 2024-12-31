@@ -6,4 +6,5 @@ stow --dotfiles \
     nvim \
     kitty \
     tmux \
-    ghostty
+    ghostty \
+    ulauncher
