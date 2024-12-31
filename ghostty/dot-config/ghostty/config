@@ -1,6 +1,6 @@
 clipboard-read = allow
 clipboard-write = allow
-background-opacity = 0.95
+#background-opacity = 0.95
 cursor-style = bar
 
 config-file = keybinds
