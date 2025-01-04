@@ -10,8 +10,6 @@ return {
 			"eslint_d",
 			"hadolint",
 			"html-lsp",
-			-- "intelephense",
-			"phpactor",
 			"nginx-language-server",
 			"php-debug-adapter",
 			"phpstan",

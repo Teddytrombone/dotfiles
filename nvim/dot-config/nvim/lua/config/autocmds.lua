@@ -11,13 +11,13 @@ vim.api.nvim_create_autocmd("FileType", {
 	end,
 })
 
-vim.api.nvim_create_autocmd("FileType", {
-	group = vim.api.nvim_create_augroup("typoscript", { clear = true }),
-	pattern = { "typoscript", "tsconfig", "ext_typoscript_setup.txt" },
-	callback = function()
-		vim.treesitter.start()
-	end,
-})
+-- vim.api.nvim_create_autocmd("FileType", {
+-- 	group = vim.api.nvim_create_augroup("typoscript", { clear = true }),
+-- 	pattern = { "typoscript", "tsconfig", "ext_typoscript_setup.txt" },
+-- 	callback = function()
+-- 		vim.treesitter.start()
+-- 	end,
+-- })
 
 -- vim.api.nvim_create_autocmd({ "BufEnter", "BufFilePost" }, {
 vim.api.nvim_create_autocmd({ "FileType" }, {
