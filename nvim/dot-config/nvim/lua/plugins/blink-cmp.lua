@@ -5,6 +5,13 @@ return {
 			"moyiz/blink-emoji.nvim",
 		},
 		opts = {
+			completion = {
+				menu = {
+					draw = {
+						columns = { { "label", "label_description", gap = 1 }, { "kind_icon", "kind" } },
+					},
+				},
+			},
 			sources = {
 				default = {
 					"emoji",
