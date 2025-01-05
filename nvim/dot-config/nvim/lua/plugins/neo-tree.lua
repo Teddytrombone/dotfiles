@@ -11,7 +11,7 @@ local icon_provider = function(icon, node, state) -- default icon provider utili
 		else
 			-- prefer filetype for typoscript files
 			local filetype = vim.filetype.match({ filename = node.path })
-			if filetype == "typoscript" then
+			if filetype == "typoscript" or filetype == "ghostty" then
 				devicon, hl = web_devicons.get_icon_by_filetype(filetype)
 			else
 				devicon, hl = web_devicons.get_icon(node.path)

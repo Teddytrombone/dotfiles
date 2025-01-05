@@ -4,6 +4,7 @@ return {
 	opts = {
 		filetype = {
 			typoscript = typoscript,
+			ghostty = { glyph = "󱙝", hl = "GHOSTTY" },
 		},
 	},
 }
