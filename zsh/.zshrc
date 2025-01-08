@@ -92,7 +92,7 @@ bindkey -e
 
 bindkey "^[[1~" beginning-of-line
 bindkey "^[[4~" end-of-line
-bindkey -s "^f" "tmux-sessionizer.sh\n"
+bindkey -s "^f" "tmux-sessionizer\n"
 
 
 ###############
