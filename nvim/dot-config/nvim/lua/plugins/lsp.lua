@@ -35,6 +35,16 @@ return {
 					return util.path.is_descendant(cwd, root) and cwd or root
 				end,
 			},
+			yamlls = {
+				settings = {
+					yaml = {
+						format = {
+							enable = false,
+							-- disable = true
+						},
+					},
+				},
+			},
 			-- lemminx = {
 			-- 	filetypes = { "xml", "xsd", "xsl", "xslt", "svg" },
 			-- 	--filetypes = { "xml", "xsd", "xsl", "xslt", "svg", "html" },

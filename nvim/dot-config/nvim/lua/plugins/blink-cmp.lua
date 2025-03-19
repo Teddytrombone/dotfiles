@@ -20,7 +20,8 @@ return {
 					emoji = {
 						module = "blink-emoji",
 						name = "Emoji",
-						score_offset = 15, -- Tune by preference
+						max_items = 10,
+						score_offset = 150, -- Tune by preference
 					},
 				},
 			},
