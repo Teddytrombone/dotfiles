@@ -21,9 +21,12 @@ return {
 						module = "blink-emoji",
 						name = "Emoji",
 						max_items = 10,
-						score_offset = 150, -- Tune by preference
+						score_offset = -150, -- Tune by preference
 					},
 				},
+			},
+			keymap = {
+				preset = "default",
 			},
 		},
 	},

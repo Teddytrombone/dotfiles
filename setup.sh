@@ -7,4 +7,5 @@ stow --dotfiles \
     kitty \
     tmux \
     ghostty \
-    ulauncher
+    ulauncher \
+    phpactor
