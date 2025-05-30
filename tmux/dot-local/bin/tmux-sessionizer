@@ -94,9 +94,12 @@ function initTmuxSession {
         PACKAGES="$selected/typo3conf/ext"
     fi
 
-    if [[ -n "$PACKAGES" && -d "$PACKAGES/bc_kunden_$selected_name" ]]; then
-        echo "Found" >>~/inittmux
-        tmux new-window -t "$selected_name":2 -n "KundenExt" -c "$PACKAGES/bc_kunden_$selected_name"
+    KUNDEN="bc_kunden_${selected_name//-/_}"
+
+    if [[ -n "$PACKAGES" && -d "$PACKAGES/$KUNDEN" ]]; then
+        tmux new-window -t "$selected_name":2 -n "KundenExt" -c "$PACKAGES/$KUNDEN"
+    elif [[ -n "$PACKAGES" && -d "$PACKAGES/${KUNDEN//_/-}" ]]; then
+        tmux new-window -t "$selected_name":2 -n "KundenExt" -c "$PACKAGES/${KUNDEN//_/-}"
     fi
 
     tmux select-window -t "$selected_name":1
