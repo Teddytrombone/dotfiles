@@ -9,4 +9,4 @@ vim.api.nvim_set_hl(0, "TYPO3", { fg = "#FF8700", bg = nil })
 vim.api.nvim_set_hl(0, "GHOSTTY", { fg = "#3551f3", bg = nil })
 
 vim.g.snacks_animate = false
--- vim.g.lazyvim_php_lsp = "intelephense"
+vim.g.lazyvim_php_lsp = "intelephense"
