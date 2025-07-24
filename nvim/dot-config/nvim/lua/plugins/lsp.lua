@@ -5,13 +5,6 @@ return {
 	opts = function(_, opts)
 		local lsp = require("lspconfig")
 
-		vim.tbl_deep_extend("keep", lsp, {
-			typo3 = {
-				cmd = { "/usr/bin/php74", "typo3/sysext/core/bin/typo3", "idecompanion:lsp" },
-				root_dir = util.root_pattern("typo3"),
-				filetypes = { "html" },
-			},
-		})
 		-- make sure mason installs the server
 		opts.servers = vim.list_extend(opts.servers, {
 			typo3 = {},
@@ -20,8 +13,6 @@ return {
 					files = {
 						exclude = {
 							"**/.devel/",
-							"**/typo3_src-**/",
-							"typo3/",
 						},
 					},
 				},

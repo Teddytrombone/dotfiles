@@ -20,14 +20,14 @@ vim.api.nvim_create_autocmd("FileType", {
 -- })
 
 -- vim.api.nvim_create_autocmd({ "BufEnter", "BufFilePost" }, {
-vim.api.nvim_create_autocmd({ "FileType" }, {
-	pattern = { "html" },
-	callback = function()
-		vim.lsp.start({
-			name = "typo3",
-			cmd = { "/usr/bin/php74", "/var/www/bluechip/typo3/sysext/core/bin/typo3", "idecompanion:lsp" },
-			root_dir = "/var/www/bluechip/",
-		})
-	end,
-	group = vim.api.nvim_create_augroup("typo3", { clear = true }),
-})
+-- vim.api.nvim_create_autocmd({ "FileType" }, {
+-- 	pattern = { "html" },
+-- 	callback = function()
+-- 		vim.lsp.start({
+-- 			name = "typo3",
+-- 			cmd = { "/usr/bin/php74", "/var/www/bluechip/typo3/sysext/core/bin/typo3", "idecompanion:lsp" },
+-- 			root_dir = "/var/www/bluechip/",
+-- 		})
+-- 	end,
+-- 	group = vim.api.nvim_create_augroup("typo3", { clear = true }),
+-- })
