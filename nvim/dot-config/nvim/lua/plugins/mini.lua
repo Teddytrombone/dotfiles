@@ -1,6 +1,6 @@
 local typoscript = { glyph = "", hl = "TYPO3" }
 return {
-	"echasnovski/mini.icons",
+	"nvim-mini/mini.icons",
 	opts = {
 		filetype = {
 			typoscript = typoscript,
