@@ -3,6 +3,8 @@
 #fi
 export PATH=$HOME/.config/composer/vendor/bin:$HOME/bin:$HOME/bin/.local:$HOME/.bin:$HOME/.bin/.local:$HOME/.local/bin:$PATH
 
+export NODE_VERSIONS=/opt/node
+
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
 
