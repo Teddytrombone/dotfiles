@@ -68,7 +68,7 @@ function search {
     echo "$(
         echo "$DEFAULT"
         echo "${projects[@]}"
-    )" | fzf-tmux --no-sort --prompt "  " | sed 's/\s*🚀//'
+    )" | fzf-tmux --no-sort --prompt "  " | sed 's/\s*🚀//' | sed 's/\s*⭐//'
 }
 
 if [[ $# -eq 1 ]]; then
