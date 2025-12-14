@@ -1,0 +1,73 @@
+MFG_ID       BNQ
+MODEL        BenQ_RD280U
+PRODUCT_CODE 32859
+MCCS_VERSION 2.2
+
+FEATURE_CODE 60 Input Source
+    ATTRS NC RW
+    VALUE x0f DisplayPort-1
+    VALUE x11 HDMI-1
+    VALUE x13 USB-C
+
+FEATURE_CODE DC Color Mode
+    ATTRS NC RW
+    VALUE x0a sRGB
+    VALUE x0f M-book
+    VALUE x12 User
+    VALUE x1f E-Paper
+    VALUE x23 HDR
+    VALUE x30 Coding dark theme
+    VALUE x31 Coding light theme
+    VALUE x32 Cinema
+
+FEATURE_CODE D1 Night hours protection
+    ATTRS NC RW
+    VALUE x00 Off
+    VALUE x01 On
+    VALUE x02 Auto
+
+FEATURE_CODE D0 Night hours protection level
+    ATTRS C RW
+
+FEATURE_CODE D7 Moon Halo state
+    ATTRS NC RW
+#    VALUE 0x0110 270° Off
+#    VALUE 0x0120 270° On
+#    VALUE 0x0210 360° Off
+#    VALUE 0x0220 360° On
+
+FEATURE_CODE D9 Moon Halo brightness
+
+FEATURE_CODE 19 Low Blue Light Plus
+    ATTRS C RW
+
+FEATURE_CODE E3 B.I. Gen 2 light meter
+    ATTRS NC RW
+    VALUE x00 Off
+    VALUE x01 On
+
+FEATURE_CODE E5 B.I. Gen 2 sensor sensitivity
+    ATTRS C RW
+
+FEATURE_CODE E6 MST Daisy Chain
+    ATTRS NC RW
+    VALUE x00 Off
+    VALUE x01 On
+
+FEATURE_CODE E7 EcoPrivacy
+    ATTRS NC RW
+    VALUE x00 Off
+    VALUE x05 5 seconds
+    VALUE x0a 10 seconds
+    VALUE x14 20 seconds
+    VALUE x1e 30 seconds
+    VALUE x3c 60 seconds
+
+FEATURE_CODE E9 EcoPrivacy sensor sensitivity
+    ATTRS NC RW
+    0x01 Near
+    0x02: Medium
+    0x03: Far
+
+FEATURE_CODE FD Color weakness
+

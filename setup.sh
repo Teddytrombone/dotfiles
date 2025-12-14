@@ -8,4 +8,5 @@ stow --dotfiles \
     tmux \
     ghostty \
     ulauncher \
-    phpactor
+    phpactor \
+    ddcutil
