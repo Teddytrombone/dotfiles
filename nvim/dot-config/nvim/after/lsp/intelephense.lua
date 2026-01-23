@@ -2,5 +2,5 @@
 return {
 	cmd = { "intelephense", "--stdio" },
 	filetypes = { "php" },
-	root_markers = { ".ddev", ".devel", "typo3_src", { ".git", "composer.json" } },
+	root_markers = { ".devel", "typo3_src", ".git", "composer.json" },
 }
