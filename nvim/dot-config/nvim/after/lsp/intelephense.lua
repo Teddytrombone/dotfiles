@@ -13,4 +13,17 @@ return {
 
 		on_dir(project_root)
 	end,
+	settings = {
+		intelephense = {
+			telemetry = {
+				enabled = false,
+			},
+			references = {
+				exclude = {
+					"**/vendor/**/{Tests,tests}/**",
+					"**/vendor/**/vendor/**",
+				},
+			},
+		},
+	},
 }
