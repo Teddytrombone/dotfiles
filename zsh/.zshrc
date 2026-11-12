@@ -55,15 +55,6 @@ prompt_svn() {
     fi
 }
 
-#############
-# COMPLETION
-#############
-zstyle ':completion:*' completer _complete _ignored
-zstyle :compinstall filename '/home/manfred/.zshrc'
-
-autoload -Uz compinit
-compinit
-SAVEHIST=10000
 
 ##########
 # HISTORY
@@ -139,6 +130,16 @@ fi
 
 source $ZSH/oh-my-zsh.sh
 
+#############
+# COMPLETION
+#############
+zstyle ':completion:*' completer _complete _ignored
+zstyle :compinstall filename '/home/manfred/.zshrc'
+
+# Not required with oh-my-zsh
+# autoload -Uz compinit
+# compinit
+
 
 if [ -e /usr/share/fzf/completion.zsh ]; then
   source /usr/share/fzf/key-bindings.zsh
@@ -184,3 +185,10 @@ if [ ! -z "${BAT_COMMAND}" ]; then
 fi
 
 command -v direnv >/dev/null 2>&1 && eval "$(direnv hook zsh)"
+
+if [[ "$TERM" == "xterm-ghostty" && -z "$SSH_CONNECTION" ]]; then
+ssh() {
+    ghostty +ssh "$@"
+}
+compdef _ssh ssh
+fi

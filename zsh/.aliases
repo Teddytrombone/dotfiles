@@ -10,6 +10,3 @@ if command -v eza &> /dev/null;then
     alias eza='eza --git --icons=always'
 fi
 
-if [[ "$TERM" == "xterm-ghostty" && -z "$SSH_CONNECTION" ]]; then
-    alias ssh='ghostty +ssh'
-fi
